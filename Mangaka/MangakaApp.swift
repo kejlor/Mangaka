@@ -11,7 +11,10 @@ import SwiftUI
 struct MangakaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let viewContext = CoreDataManager.shared.persistantContainer.viewContext
+            
+            ContentView(vm: MangaListViewModel(context: viewContext))
+                .environment(\.managedObjectContext, viewContext)
         }
     }
 }

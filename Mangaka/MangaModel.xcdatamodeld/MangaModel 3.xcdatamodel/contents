@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Manga" representedClassName="Manga" syncable="YES">
+        <attribute name="content" attributeType="Transformable" valueTransformerName="UIImageTransformer" customClassName="UIImage"/>
+        <attribute name="favourite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="pages" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="terse" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="mangaCharacters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MangaCharacter" inverseName="mangas" inverseEntity="MangaCharacter"/>
+        <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Review" inverseName="manga" inverseEntity="Review"/>
+    </entity>
+    <entity name="MangaCharacter" representedClassName="MangaCharacter" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String"/>
+        <relationship name="mangas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Manga" inverseName="mangaCharacters" inverseEntity="Manga"/>
+    </entity>
+    <entity name="Review" representedClassName="Review" syncable="YES" codeGenerationType="class">
+        <attribute name="content" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="manga" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Manga" inverseName="reviews" inverseEntity="Manga"/>
+    </entity>
+    <elements>
+        <element name="Manga" positionX="-63" positionY="-18" width="128" height="134"/>
+        <element name="MangaCharacter" positionX="-54" positionY="27" width="128" height="59"/>
+        <element name="Review" positionX="-63" positionY="18" width="128" height="74"/>
+    </elements>
+</model>
